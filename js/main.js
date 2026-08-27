@@ -1,5 +1,79 @@
 "use strict";
 
+function removeLocationHash() {
+  if (!window.location.hash) return;
+
+  const urlWithoutHash = window.location.href.slice(0, -window.location.hash.length);
+  window.history.replaceState(window.history.state, "", urlWithoutHash);
+}
+
+function scrollToTopInstantly() {
+  const root = document.documentElement;
+  const previousScrollBehavior = root.style.scrollBehavior;
+
+  root.style.setProperty("scroll-behavior", "auto", "important");
+  window.scrollTo(0, 0);
+  root.scrollTop = 0;
+  document.body.scrollTop = 0;
+
+  requestAnimationFrame(() => {
+    root.style.scrollBehavior = previousScrollBehavior;
+  });
+}
+
+function initializePagePosition() {
+  if ("scrollRestoration" in window.history) {
+    window.history.scrollRestoration = "manual";
+  }
+
+  removeLocationHash();
+  scrollToTopInstantly();
+  window.addEventListener("load", scrollToTopInstantly, { once: true });
+}
+
+function initializeInternalNavigation() {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      if (
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey
+      ) {
+        return;
+      }
+
+      let targetId;
+
+      try {
+        targetId = decodeURIComponent(link.hash.slice(1));
+      } catch {
+        return;
+      }
+
+      const target = document.getElementById(targetId);
+      if (!target) return;
+
+      event.preventDefault();
+      removeLocationHash();
+      target.scrollIntoView({
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+        block: "start",
+      });
+
+      if (link.classList.contains("skip-link")) {
+        target.setAttribute("tabindex", "-1");
+        target.focus({ preventScroll: true });
+        target.addEventListener("blur", () => target.removeAttribute("tabindex"), { once: true });
+      }
+    });
+  });
+}
+
 // Oficjalny wykaz PTT: https://www.ptt.org.pl/odznaka-turystyczna-korona-tatr/
 const places = Object.freeze([
   { id: 1, name: "Rysy", height: 2503, country: "SK", type: "szczyt" },
@@ -206,44 +280,13 @@ function initializeTable() {
   });
 
   renderTable();
-
-  if (window.location.hash) {
-    window.addEventListener(
-      "load",
-      () => {
-        window.setTimeout(() => {
-          let targetId;
-
-          try {
-            targetId = decodeURIComponent(window.location.hash.slice(1));
-          } catch {
-            return;
-          }
-
-          const target = document.getElementById(targetId);
-          if (!target) return;
-
-          const headerHeight = document.querySelector(".site-header")?.offsetHeight ?? 0;
-          const targetTop = target.offsetTop - headerHeight;
-          const root = document.documentElement;
-          const previousScrollBehavior = root.style.scrollBehavior;
-          root.style.setProperty("scroll-behavior", "auto", "important");
-          getComputedStyle(root).scrollBehavior;
-          root.scrollTop = Math.max(0, targetTop);
-          document.body.scrollTop = Math.max(0, targetTop);
-          requestAnimationFrame(() => {
-            root.style.scrollBehavior = previousScrollBehavior;
-          });
-        }, 0);
-      },
-      { once: true },
-    );
-  }
 }
 
 document.querySelectorAll("[data-year]").forEach((element) => {
   element.textContent = new Date().getFullYear();
 });
 
+initializePagePosition();
+initializeInternalNavigation();
 updateProfileSummaries();
 initializeTable();
