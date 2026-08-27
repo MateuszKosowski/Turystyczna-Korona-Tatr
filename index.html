@@ -3,24 +3,345 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0c1b2a">
-    <title>Artur &amp; Kosa</title>
+    <meta
+      name="description"
+      content="Prywatny dziennik Mateusza Kosowskiego i Artura Urbaniaka dokumentujący drogę po odznakę Turystyczna Korona Tatr."
+    >
+    <meta name="theme-color" content="#09110f">
+    <title>Turystyczna Korona Tatr — Mateusz i Artur</title>
+    <link rel="icon" href="assets/icons/mountains.svg" type="image/svg+xml">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/main.js" defer></script>
   </head>
   <body>
-    <main>
-      <section class="message" aria-labelledby="greeting">
-        <h1 id="greeting">Cześć Artur,</h1>
-        <p>
-          dzisiaj mi się nie chce, ale jutro zrobię tą stronkę.<br>
-          <span class="success">Dzisiaj udało się wszystko spiąć.</span>
-        </p>
+    <a class="skip-link" href="#main-content">Przejdź do treści</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="Turystyczna Korona Tatr — strona główna">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="assets/icons/mountains.svg" alt="" width="36" height="36">
+          </span>
+          <span class="brand-copy">
+            <strong>TKT</strong>
+            <span>Mateusz &amp; Artur</span>
+          </span>
+        </a>
+
+        <nav class="main-nav" aria-label="Główna nawigacja">
+          <a href="#o-projekcie">O projekcie</a>
+          <a href="#uczestnicy">Uczestnicy</a>
+          <a href="#postep">Wykaz</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow"><span aria-hidden="true"></span> Tatry Polskie i Słowackie</p>
+            <h1 id="hero-title">
+              Turystyczna
+              <span>Korona Tatr</span>
+            </h1>
+            <p class="hero-lead">
+              Cyfrowy dziennik wypraw po Turystyczną Koronę Tatr. Śledź nasze postępy,
+              trasy i kadry ze szlaków.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#postep">
+                Zobacz nasze postępy
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M10 3v13m0 0 5-5m-5 5-5-5"></path>
+                </svg>
+              </a>
+              <a class="button button-secondary" href="#o-projekcie">Poznaj projekt</a>
+            </div>
+            <dl class="hero-facts" aria-label="Najważniejsze liczby projektu">
+              <div>
+                <dt>60</dt>
+                <dd>miejsc na liście</dd>
+              </div>
+              <div>
+                <dt>2</dt>
+                <dd>kraje</dd>
+              </div>
+              <div>
+                <dt>2503 <span>m n.p.m.</span></dt>
+                <dd>najwyższy cel</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="hero-visual" aria-hidden="true">
+            <div class="contour contour-one"></div>
+            <div class="contour contour-two"></div>
+            <div class="summit-label summit-label-high">
+              <span>01</span>
+              <strong>Rysy</strong>
+              <small>2503 m n.p.m.</small>
+            </div>
+            <div class="summit-label summit-label-low">
+              <span>60</span>
+              <strong>Nosal</strong>
+              <small>1206 m n.p.m.</small>
+            </div>
+            <svg class="mountain-range" viewBox="0 0 720 520" role="presentation">
+              <defs>
+                <linearGradient id="mountain-back" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#315247"></stop>
+                  <stop offset="1" stop-color="#172a24"></stop>
+                </linearGradient>
+                <linearGradient id="mountain-front" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#233c34"></stop>
+                  <stop offset="1" stop-color="#0d1815"></stop>
+                </linearGradient>
+              </defs>
+              <path
+                class="ridge-line"
+                d="M0 438 108 318l55 42 98-142 73 103 93-202 106 194 52-55 135 180"
+              ></path>
+              <path
+                fill="url(#mountain-back)"
+                d="M0 438 108 318l55 42 98-142 73 103 93-202 106 194 52-55 135 180v82H0Z"
+              ></path>
+              <path
+                class="snow-line"
+                d="m224 271 37-53 36 51-34-18-39 20Zm155-48 48-104 50 91-48-44-50 57Z"
+              ></path>
+              <path
+                fill="url(#mountain-front)"
+                d="M0 478 109 389l76 48 83-91 82 83 95-119 88 116 73-68 114 102v60H0Z"
+              ></path>
+              <path
+                class="route-line"
+                d="M155 475C182 463 202 420 229 407c63 5 75-77 134-84 75-9 63-83 91-130"
+              ></path>
+              <circle class="route-point" cx="454" cy="193" r="7"></circle>
+            </svg>
+            <div class="visual-caption">
+              <span>Cel</span>
+              <strong>złota odznaka</strong>
+              <small>wszystkie 60 miejsc</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="project-section section" id="o-projekcie" aria-labelledby="project-title">
+        <div class="container project-grid">
+          <div class="section-heading">
+            <p class="eyebrow"><span aria-hidden="true"></span> O projekcie</p>
+            <h2 id="project-title">Nasz cyfrowy dziennik z tatrzańskiego szlaku</h2>
+          </div>
+          <div class="project-copy">
+            <p>
+              Ta strona porządkuje naszą drogę po odznakę Turystyczna Korona Tatr. W jednym
+              miejscu zbieramy potwierdzone wejścia, fotografie oraz osobne historie Mateusza
+              i Artura — od pierwszego szczytu aż po pełną Koronę.
+            </p>
+            <p>
+              Oficjalny wykaz obejmuje 54 szczyty i 6 przełęczy dostępnych znakowanymi
+              szlakami po polskiej i słowackiej stronie Tatr.
+            </p>
+          </div>
+        </div>
+
+        <div class="container badge-levels" role="list" aria-label="Stopnie odznaki Turystyczna Korona Tatr">
+          <article class="level-card" role="listitem">
+            <span class="level-number">20</span>
+            <div>
+              <h3>Brązowa</h3>
+              <p>pierwszy etap drogi</p>
+            </div>
+          </article>
+          <article class="level-card" role="listitem">
+            <span class="level-number">40</span>
+            <div>
+              <h3>Srebrna</h3>
+              <p>dwie trzecie wykazu</p>
+            </div>
+          </article>
+          <article class="level-card level-card-accent" role="listitem">
+            <span class="level-number">60</span>
+            <div>
+              <h3>Złota</h3>
+              <p>pełna Korona Tatr</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="participants-section section" id="uczestnicy" aria-labelledby="participants-title">
+        <div class="container">
+          <div class="section-heading section-heading-row">
+            <div>
+              <p class="eyebrow"><span aria-hidden="true"></span> Uczestnicy</p>
+              <h2 id="participants-title">Dwie osobne historie</h2>
+            </div>
+            <p class="section-intro">
+              Każdy profil będzie osobistym archiwum wejść, tras i zdjęć z wypraw.
+            </p>
+          </div>
+
+          <div class="participant-grid">
+            <a class="participant-card participant-mateusz" href="mateusz-kosowski.html">
+              <span class="participant-topline">
+                <span class="participant-index">01</span>
+                <span class="participant-status">Profil w przygotowaniu</span>
+              </span>
+              <span class="participant-avatar" aria-hidden="true">MK</span>
+              <span class="participant-name">Mateusz Kosowski</span>
+              <span class="participant-role">Uczestnik wypraw</span>
+              <span class="progress-copy">
+                <span><strong data-completed="mateusz">0</strong> z 60 oznaczonych</span>
+                <span data-percentage="mateusz">0%</span>
+              </span>
+              <span class="progress-track" aria-hidden="true">
+                <span class="progress-value" data-progress="mateusz"></span>
+              </span>
+              <span class="participant-link">
+                Otwórz profil
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5"></path></svg>
+              </span>
+            </a>
+
+            <a class="participant-card participant-artur" href="artur-urbaniak.html">
+              <span class="participant-topline">
+                <span class="participant-index">02</span>
+                <span class="participant-status">Profil w przygotowaniu</span>
+              </span>
+              <span class="participant-avatar" aria-hidden="true">AU</span>
+              <span class="participant-name">Artur Urbaniak</span>
+              <span class="participant-role">Uczestnik wypraw</span>
+              <span class="progress-copy">
+                <span><strong data-completed="artur">0</strong> z 60 oznaczonych</span>
+                <span data-percentage="artur">0%</span>
+              </span>
+              <span class="progress-track" aria-hidden="true">
+                <span class="progress-value" data-progress="artur"></span>
+              </span>
+              <span class="participant-link">
+                Otwórz profil
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5"></path></svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="progress-section section" id="postep" aria-labelledby="progress-title">
+        <div class="container">
+          <div class="section-heading section-heading-row progress-heading">
+            <div>
+              <p class="eyebrow"><span aria-hidden="true"></span> Wykaz TKT</p>
+              <h2 id="progress-title">Szczyty i przełęcze</h2>
+            </div>
+            <p class="section-intro">
+              Pełna lista według regulaminu PTT. Statusy uzupełnimy na podstawie Waszych wejść.
+            </p>
+          </div>
+
+          <div class="table-panel">
+            <div class="table-toolbar">
+              <div class="search-field">
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <circle cx="8.5" cy="8.5" r="5.5"></circle>
+                  <path d="m13 13 4 4"></path>
+                </svg>
+                <label class="sr-only" for="place-search">Szukaj szczytu lub przełęczy</label>
+                <input
+                  id="place-search"
+                  type="search"
+                  placeholder="Szukaj miejsca…"
+                  autocomplete="off"
+                >
+              </div>
+
+              <div class="filter-group" role="group" aria-label="Filtruj wykaz według rodzaju">
+                <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">
+                  Wszystkie <span>60</span>
+                </button>
+                <button class="filter-button" type="button" data-filter="szczyt" aria-pressed="false">
+                  Szczyty <span>54</span>
+                </button>
+                <button class="filter-button" type="button" data-filter="przelecz" aria-pressed="false">
+                  Przełęcze <span>6</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="table-meta">
+              <p id="result-count" aria-live="polite">Wyświetlono 60 z 60 miejsc</p>
+              <div class="status-legend" role="group" aria-label="Legenda statusów">
+                <span><i class="legend-mark legend-done" aria-hidden="true">✓</i> Zdobyty</span>
+                <span><i class="legend-mark" aria-hidden="true">—</i> Brak wpisu</span>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <caption class="sr-only">
+                  Wykaz 60 szczytów i przełęczy Turystycznej Korony Tatr wraz ze statusem
+                  Mateusza Kosowskiego i Artura Urbaniaka
+                </caption>
+                <thead>
+                  <tr>
+                    <th class="column-index" scope="col">Lp.</th>
+                    <th class="column-place" scope="col">Miejsce</th>
+                    <th class="column-type" scope="col">Rodzaj</th>
+                    <th class="column-country" scope="col">Kraj</th>
+                    <th class="column-height" scope="col">Wysokość</th>
+                    <th class="column-person" scope="col">
+                      <span class="person-full">Mateusz</span>
+                      <abbr class="person-short" title="Mateusz Kosowski">MK</abbr>
+                    </th>
+                    <th class="column-person" scope="col">
+                      <span class="person-full">Artur</span>
+                      <abbr class="person-short" title="Artur Urbaniak">AU</abbr>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="summits-table-body"></tbody>
+              </table>
+              <noscript>
+                <p class="noscript-message">
+                  Włącz JavaScript, aby wyświetlić i filtrować wykaz. Pełna lista jest dostępna
+                  w <a href="https://www.ptt.org.pl/odznaka-turystyczna-korona-tatr/">regulaminie PTT</a>.
+                </p>
+              </noscript>
+            </div>
+
+            <div class="table-source">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v11m0 4v.01"></path></svg>
+              <p>
+                Nazwy, numeracja i wysokości pochodzą z
+                <a href="https://www.ptt.org.pl/odznaka-turystyczna-korona-tatr/" target="_blank" rel="noreferrer">
+                  regulaminu Polskiego Towarzystwa Tatrzańskiego
+                  <span class="sr-only">(otwiera się w nowej karcie)</span>
+                </a>.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
-    <div class="mountain-flyer" aria-hidden="true">
-      <img src="assets/icons/mountains.svg" alt="" width="64" height="64">
-    </div>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a class="brand footer-brand" href="#top" aria-label="Wróć na początek strony">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="assets/icons/mountains.svg" alt="" width="36" height="36">
+          </span>
+          <span class="brand-copy">
+            <strong>Turystyczna Korona Tatr</strong>
+            <span>Nasza droga po 60 miejsc</span>
+          </span>
+        </a>
+        <p>Mateusz Kosowski &amp; Artur Urbaniak <span aria-hidden="true">·</span> <span data-year>2026</span></p>
+      </div>
+    </footer>
   </body>
 </html>
