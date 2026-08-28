@@ -174,8 +174,8 @@ const profileEntries = Object.freeze({
         }),
         Object.freeze({
           src: "assets/MK/Rysy Słowacja/3.webp",
-          width: 9000,
-          height: 9000,
+          width: 4096,
+          height: 4096,
           alt: "Kadr z wejścia na Rysy od słowackiej strony",
           caption: "W drodze na Rysy",
         }),
