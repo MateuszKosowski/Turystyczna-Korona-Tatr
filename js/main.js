@@ -140,13 +140,68 @@ const places = Object.freeze([
 
 // Dodaj numery pozycji do odpowiedniej listy, gdy potwierdzimy Wasze dotychczasowe wejścia.
 const completedPlaces = {
-  mateusz: new Set([60]),
+  mateusz: new Set([25, 60]),
   artur: new Set([]),
 };
 
 // Dodawaj tu wyłącznie potwierdzone wyprawy. Brak wpisu oznacza pusty katalog.
 const profileEntries = Object.freeze({
   mateusz: Object.freeze({
+    25: Object.freeze({
+      date: "2024-07-13",
+      page: "entries/mateusz/szpiglasowy-wierch/index.html",
+      route: Object.freeze({
+        label: "Palenica Białczańska → czerwony szlak → most nad Roztoką → zielony szlak (Dolina Roztoki, Siklawa) → niebieski szlak (Niżnie Solnisko) → żółty szlak przez Szpiglasową Przełęcz → Szpiglasowy Wierch",
+        duration: "5:25 h",
+        distanceKm: 11.4,
+        ascentM: 1300,
+        descentM: 113,
+      }),
+      photos: Object.freeze([
+        Object.freeze({
+          src: "assets/MK/Szpiglasowy Wierch/1.webp",
+          width: 9000,
+          height: 9000,
+          alt: "Turyści na szlaku wśród zielonych zboczy Doliny Roztoki",
+          caption: "Szlak przez Dolinę Roztoki",
+        }),
+        Object.freeze({
+          src: "assets/MK/Szpiglasowy Wierch/2.webp",
+          width: 9000,
+          height: 9000,
+          alt: "Wodospad Siklawa spływający po skalnych ścianach",
+          caption: "Wodospad Siklawa",
+        }),
+        Object.freeze({
+          src: "assets/MK/Szpiglasowy Wierch/3.webp",
+          width: 8999,
+          height: 9000,
+          alt: "Mateusz stojący na drewnianym mostku nad górskim potokiem",
+          caption: "Mostek nad potokiem",
+        }),
+        Object.freeze({
+          src: "assets/MK/Szpiglasowy Wierch/4.webp",
+          width: 1799,
+          height: 1799,
+          alt: "Turyści na skalistym podejściu oznaczonym żółtym szlakiem",
+          caption: "Podejście żółtym szlakiem",
+        }),
+        Object.freeze({
+          src: "assets/MK/Szpiglasowy Wierch/5.webp",
+          width: 1471,
+          height: 1471,
+          alt: "Mateusz przy drogowskazie Szpiglasowego Wierchu",
+          caption: "Przy drogowskazie Szpiglasowego Wierchu",
+        }),
+        Object.freeze({
+          src: "assets/MK/Szpiglasowy Wierch/6.webp",
+          width: 9000,
+          height: 9000,
+          alt: "Mateusz siedzący na skalistym szczycie Szpiglasowego Wierchu",
+          caption: "Na szczycie Szpiglasowego Wierchu",
+        }),
+      ]),
+    }),
     60: Object.freeze({
       date: "2021-10-01",
       page: "entries/mateusz/nosal/index.html",
@@ -500,7 +555,7 @@ function initializeEntryPage() {
           alt="${photo.alt}"
           width="${photo.width}"
           height="${photo.height}"
-          loading="${index < 4 ? "eager" : "lazy"}"
+          loading="lazy"
           decoding="async"
         >
         <span class="gallery-tile-number">${String(index + 1).padStart(2, "0")}</span>
