@@ -541,7 +541,7 @@ function initializeEntryPage() {
 
     entry.photos.forEach((photo, index) => {
       const link = document.createElement("a");
-      link.className = "gallery-tile";
+      link.className = "gallery-tile is-loading";
       link.href = photo.src;
       link.dataset.galleryItem = "";
       link.dataset.caption = photo.caption;
@@ -558,12 +558,31 @@ function initializeEntryPage() {
           loading="lazy"
           decoding="async"
         >
+        <span class="gallery-tile-loader" aria-hidden="true"></span>
         <span class="gallery-tile-number">${String(index + 1).padStart(2, "0")}</span>
         <span class="gallery-tile-caption">${photo.caption}</span>
         <span class="gallery-tile-open" aria-hidden="true">
           <svg viewBox="0 0 20 20"><path d="M7 3H3v4m10-4h4v4M7 17H3v-4m10 4h4v-4"></path></svg>
         </span>
       `;
+
+      const image = link.querySelector("img");
+      const revealImage = () => {
+        if (!image.complete || image.naturalWidth === 0) return;
+
+        image
+          .decode()
+          .catch(() => undefined)
+          .finally(() => link.classList.replace("is-loading", "is-loaded"));
+      };
+
+      image.addEventListener("load", revealImage, { once: true });
+      image.addEventListener(
+        "error",
+        () => link.classList.replace("is-loading", "has-image-error"),
+        { once: true },
+      );
+      revealImage();
       fragment.append(link);
     });
 

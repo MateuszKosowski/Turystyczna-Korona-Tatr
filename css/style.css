@@ -1984,8 +1984,51 @@ a.folder-card:focus-visible {
 .gallery-tile img {
   width: 100%;
   height: 100%;
+  opacity: 0;
   object-fit: cover;
-  transition: transform 350ms ease, filter 350ms ease;
+  transition: opacity 220ms ease, transform 350ms ease, filter 350ms ease;
+}
+
+.gallery-tile.is-loaded img {
+  opacity: 1;
+}
+
+.gallery-tile-loader,
+.lightbox-loader {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.gallery-tile-loader {
+  z-index: 2;
+  inset: 0;
+  background: var(--surface);
+  transition: opacity 180ms ease, visibility 180ms ease;
+}
+
+.gallery-tile-loader::after,
+.lightbox-loader::after {
+  width: 27px;
+  height: 27px;
+  border: 2px solid rgba(236, 244, 239, 0.2);
+  border-top-color: var(--accent-light);
+  border-radius: 50%;
+  content: "";
+  animation: gallery-image-spinner 800ms linear infinite;
+}
+
+.gallery-tile.is-loaded .gallery-tile-loader,
+.gallery-tile.has-image-error .gallery-tile-loader {
+  visibility: hidden;
+  opacity: 0;
+}
+
+@keyframes gallery-image-spinner {
+  to {
+    transform: rotate(1turn);
+  }
 }
 
 .gallery-tile:hover img {
@@ -2114,6 +2157,7 @@ a.folder-card:focus-visible {
 }
 
 .lightbox-body {
+  position: relative;
   display: grid;
   min-height: 0;
   grid-template-columns: 72px minmax(0, 1fr) 72px;
@@ -2123,6 +2167,8 @@ a.folder-card:focus-visible {
 }
 
 .lightbox-body figure {
+  position: relative;
+  z-index: 0;
   display: grid;
   min-width: 0;
   height: 100%;
@@ -2137,6 +2183,27 @@ a.folder-card:focus-visible {
   max-height: 100%;
   border-radius: var(--radius-medium);
   object-fit: contain;
+  transition: opacity 180ms ease;
+}
+
+.gallery-lightbox.is-image-loading .lightbox-body img {
+  opacity: 0;
+}
+
+.lightbox-loader {
+  z-index: 1;
+  inset: 0;
+  transition: opacity 180ms ease, visibility 180ms ease;
+}
+
+.gallery-lightbox:not(.is-image-loading) .lightbox-loader {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.lightbox-body > .lightbox-nav {
+  position: relative;
+  z-index: 2;
 }
 
 .lightbox-body figcaption {

@@ -29,19 +29,38 @@ function initializeGalleryLightbox() {
   let lastTrigger = null;
   let touchStartX = null;
 
+  function revealLightboxImage() {
+    if (!image.complete || image.naturalWidth === 0) return;
+
+    const source = image.currentSrc || image.src;
+    image
+      .decode()
+      .catch(() => undefined)
+      .finally(() => {
+        if ((image.currentSrc || image.src) === source) {
+          dialog.classList.remove("is-image-loading");
+        }
+      });
+  }
+
   function showItem(index) {
     currentIndex = (index + items.length) % items.length;
     const item = items[currentIndex];
     const thumbnail = item.querySelector("img");
 
+    dialog.classList.add("is-image-loading");
     image.src = item.href;
     image.alt = thumbnail?.alt ?? "";
+    revealLightboxImage();
     const description = item.dataset.caption ?? thumbnail?.alt ?? "Zdjęcie z galerii";
 
     caption.textContent = description;
     counter.textContent = `${currentIndex + 1} / ${items.length}`;
     status.textContent = `Zdjęcie ${currentIndex + 1} z ${items.length}: ${description}`;
   }
+
+  image.addEventListener("load", revealLightboxImage);
+  image.addEventListener("error", () => dialog.classList.remove("is-image-loading"));
 
   function openLightbox(index, trigger) {
     if (typeof dialog.showModal !== "function") return;
