@@ -140,13 +140,89 @@ const places = Object.freeze([
 
 // Dodaj numery pozycji do odpowiedniej listy, gdy potwierdzimy Wasze dotychczasowe wejścia.
 const completedPlaces = {
-  mateusz: new Set([25, 60]),
+  mateusz: new Set([1, 25, 60]),
   artur: new Set([]),
 };
 
 // Dodawaj tu wyłącznie potwierdzone wyprawy. Brak wpisu oznacza pusty katalog.
 const profileEntries = Object.freeze({
   mateusz: Object.freeze({
+    1: Object.freeze({
+      date: "2025-07-14",
+      page: "entries/mateusz/rysy-slowackie/index.html",
+      route: Object.freeze({
+        label: "Szczyrbskie Jezioro → czerwony szlak → Hotel Górski Popradzki Staw → niebieski szlak → Rozdroże nad Żabim Potokiem → czerwony szlak przez Wielki Żabi Staw Mięguszowiecki → Schronisko pod Rysami → Rysy",
+        duration: "4:35 h",
+        distanceKm: 10.3,
+        ascentM: 1325,
+        descentM: 157,
+      }),
+      photos: Object.freeze([
+        Object.freeze({
+          src: "assets/MK/Rysy Słowacja/1.webp",
+          width: 9000,
+          height: 9000,
+          alt: "Widok na Tatry Wysokie ze szlaku na Rysy od słowackiej strony",
+          caption: "Widok ze szlaku na Tatry Wysokie",
+        }),
+        Object.freeze({
+          src: "assets/MK/Rysy Słowacja/2.webp",
+          width: 9000,
+          height: 9000,
+          alt: "Kadr z wejścia na Rysy od słowackiej strony",
+          caption: "Na szlaku ze Szczyrbskiego Jeziora",
+        }),
+        Object.freeze({
+          src: "assets/MK/Rysy Słowacja/3.webp",
+          width: 9000,
+          height: 9000,
+          alt: "Kadr z wejścia na Rysy od słowackiej strony",
+          caption: "W drodze na Rysy",
+        }),
+        Object.freeze({
+          src: "assets/MK/Rysy Słowacja/4.webp",
+          width: 9000,
+          height: 9000,
+          alt: "Drogowskaz na Rozdrożu nad Żabim Potokiem",
+          caption: "Rozdroże nad Żabim Potokiem",
+        }),
+        Object.freeze({
+          src: "assets/MK/Rysy Słowacja/5.webp",
+          width: 9000,
+          height: 9000,
+          alt: "Kadr z wejścia na Rysy od słowackiej strony",
+          caption: "Podejście czerwonym szlakiem",
+        }),
+        Object.freeze({
+          src: "assets/MK/Rysy Słowacja/6.webp",
+          width: 9000,
+          height: 9000,
+          alt: "Kadr z wejścia na Rysy od słowackiej strony",
+          caption: "W Dolinie Żabiej Mięguszowieckiej",
+        }),
+        Object.freeze({
+          src: "assets/MK/Rysy Słowacja/7.webp",
+          width: 9000,
+          height: 9000,
+          alt: "Tablica przy Schronisku pod Rysami z widokiem na Tatry",
+          caption: "Przy Schronisku pod Rysami",
+        }),
+        Object.freeze({
+          src: "assets/MK/Rysy Słowacja/8.webp",
+          width: 9000,
+          height: 9000,
+          alt: "Kadr z wejścia na Rysy od słowackiej strony",
+          caption: "Górska panorama pod Rysami",
+        }),
+        Object.freeze({
+          src: "assets/MK/Rysy Słowacja/9.webp",
+          width: 2994,
+          height: 2993,
+          alt: "Grupa turystów na skalistym szczycie Rysów",
+          caption: "Na Rysach",
+        }),
+      ]),
+    }),
     25: Object.freeze({
       date: "2024-07-13",
       page: "entries/mateusz/szpiglasowy-wierch/index.html",
