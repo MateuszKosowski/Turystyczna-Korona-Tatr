@@ -140,7 +140,7 @@ const places = Object.freeze([
 
 // Dodaj numery pozycji do odpowiedniej listy, gdy potwierdzimy Wasze dotychczasowe wejścia.
 const completedPlaces = {
-  mateusz: new Set([1, 25, 60]),
+  mateusz: new Set([1, 25, 48, 60]),
   artur: new Set([]),
 };
 
@@ -275,6 +275,47 @@ const profileEntries = Object.freeze({
           height: 9000,
           alt: "Mateusz siedzący na skalistym szczycie Szpiglasowego Wierchu",
           caption: "Na szczycie Szpiglasowego Wierchu",
+        }),
+      ]),
+    }),
+    48: Object.freeze({
+      date: "2025-09-20",
+      page: "entries/mateusz/kasprowy-wierch/index.html",
+      route: Object.freeze({
+        label: "Kuźnice → zielony szlak → Kasprowy Wierch",
+        duration: "3:13 h",
+        distanceKm: 6.4,
+        ascentM: 972,
+        descentM: 20,
+      }),
+      photos: Object.freeze([
+        Object.freeze({
+          src: "assets/MK/Kasprowy Wierch/1.webp",
+          width: 9000,
+          height: 9000,
+          alt: "Drogowskaz na zielonym szlaku w kierunku Kasprowego Wierchu",
+          caption: "Drogowskaz na Myślenickich Turniach",
+        }),
+        Object.freeze({
+          src: "assets/MK/Kasprowy Wierch/2.webp",
+          width: 1535,
+          height: 1536,
+          alt: "Mateusz na podejściu na Kasprowy Wierch z widokiem na dolinę",
+          caption: "Panorama z podejścia",
+        }),
+        Object.freeze({
+          src: "assets/MK/Kasprowy Wierch/3.webp",
+          width: 3024,
+          height: 3024,
+          alt: "Grupa turystów na grzbiecie Kasprowego Wierchu",
+          caption: "Na grzbiecie Kasprowego Wierchu",
+        }),
+        Object.freeze({
+          src: "assets/MK/Kasprowy Wierch/4.webp",
+          width: 1536,
+          height: 1536,
+          alt: "Grupa turystów przy drogowskazie na Kasprowym Wierchu",
+          caption: "Na Kasprowym Wierchu",
         }),
       ]),
     }),
