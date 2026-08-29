@@ -140,7 +140,7 @@ const places = Object.freeze([
 
 // Dodaj numery pozycji do odpowiedniej listy, gdy potwierdzimy Wasze dotychczasowe wejścia.
 const completedPlaces = {
-  mateusz: new Set([1, 25, 48, 60]),
+  mateusz: new Set([1, 11, 25, 48, 60]),
   artur: new Set([]),
 };
 
@@ -223,6 +223,97 @@ const profileEntries = Object.freeze({
         }),
       ]),
     }),
+    11: Object.freeze({
+      date: "2025-09-20",
+      dayOrder: 2,
+      page: "entries/mateusz/swinica/index.html",
+      route: Object.freeze({
+        label: "Kuźnice → zielony szlak → Kasprowy Wierch → czerwony szlak przez Liliowe → Świnicka Przełęcz → czerwony szlak → Świnica",
+        duration: "5:20 h",
+        distanceKm: 9.7,
+        ascentM: 1465,
+        descentM: 199,
+      }),
+      photos: Object.freeze([
+        Object.freeze({
+          src: "assets/MK/Kasprowy Wierch/1.webp",
+          width: 9000,
+          height: 9000,
+          alt: "Drogowskaz na zielonym szlaku w kierunku Kasprowego Wierchu",
+          caption: "Drogowskaz na Myślenickich Turniach",
+        }),
+        Object.freeze({
+          src: "assets/MK/Kasprowy Wierch/2.webp",
+          width: 1535,
+          height: 1536,
+          alt: "Mateusz na podejściu na Kasprowy Wierch z widokiem na dolinę",
+          caption: "Panorama z podejścia na Kasprowy",
+        }),
+        Object.freeze({
+          src: "assets/MK/Kasprowy Wierch/3.webp",
+          width: 3024,
+          height: 3024,
+          alt: "Grupa turystów na grzbiecie Kasprowego Wierchu",
+          caption: "Na grzbiecie Kasprowego Wierchu",
+        }),
+        Object.freeze({
+          src: "assets/MK/Kasprowy Wierch/4.webp",
+          width: 1536,
+          height: 1536,
+          alt: "Grupa turystów przy drogowskazie na Kasprowym Wierchu",
+          caption: "Na Kasprowym Wierchu",
+        }),
+        Object.freeze({
+          src: "assets/MK/Świnica/1.webp",
+          width: 9000,
+          height: 9000,
+          alt: "Grań Liliowe na czerwonym szlaku w kierunku Świnicy",
+          caption: "Czerwony szlak przez Liliowe",
+        }),
+        Object.freeze({
+          src: "assets/MK/Świnica/2.webp",
+          width: 8999,
+          height: 9000,
+          alt: "Drogowskaz na Liliowem wskazujący drogę na Świnicę",
+          caption: "Drogowskaz na Liliowem",
+        }),
+        Object.freeze({
+          src: "assets/MK/Świnica/3.webp",
+          width: 1536,
+          height: 1536,
+          alt: "Mateusz na skalistym szlaku z widokiem na Świnicę",
+          caption: "Świnica przed nami",
+        }),
+        Object.freeze({
+          src: "assets/MK/Świnica/4.webp",
+          width: 2999,
+          height: 3000,
+          alt: "Skaliste podejście czerwonym szlakiem pod Świnicę",
+          caption: "Podejście pod Świnicę",
+        }),
+        Object.freeze({
+          src: "assets/MK/Świnica/5.webp",
+          width: 3000,
+          height: 3000,
+          alt: "Turyści na ubezpieczonym łańcuchami odcinku szlaku na Świnicę",
+          caption: "Ubezpieczony odcinek szlaku",
+        }),
+        Object.freeze({
+          src: "assets/MK/Świnica/6.webp",
+          width: 3024,
+          height: 3023,
+          alt: "Turyści na stromym skalistym podejściu na Świnicę",
+          caption: "Strome podejście na szczyt",
+        }),
+        Object.freeze({
+          src: "assets/MK/Świnica/7.webp",
+          width: 9000,
+          height: 8999,
+          alt: "Grupa turystów na szczycie Świnicy",
+          caption: "Na szczycie Świnicy",
+        }),
+      ]),
+    }),
     25: Object.freeze({
       date: "2024-07-13",
       page: "entries/mateusz/szpiglasowy-wierch/index.html",
@@ -280,6 +371,7 @@ const profileEntries = Object.freeze({
     }),
     48: Object.freeze({
       date: "2025-09-20",
+      dayOrder: 1,
       page: "entries/mateusz/kasprowy-wierch/index.html",
       route: Object.freeze({
         label: "Kuźnice → zielony szlak → Kasprowy Wierch",
@@ -553,10 +645,16 @@ function initializeProfileFolders() {
     const completedProfilePlaces = places
       .filter((place) => completedPlaces[person].has(place.id))
       .sort((firstPlace, secondPlace) => {
-        const firstDate = profileEntries[person]?.[firstPlace.id]?.date;
-        const secondDate = profileEntries[person]?.[secondPlace.id]?.date;
+        const firstEntry = profileEntries[person]?.[firstPlace.id];
+        const secondEntry = profileEntries[person]?.[secondPlace.id];
+        const firstDate = firstEntry?.date;
+        const secondDate = secondEntry?.date;
 
-        if (firstDate && secondDate) return firstDate.localeCompare(secondDate);
+        if (firstDate && secondDate) {
+          const dateOrder = firstDate.localeCompare(secondDate);
+          if (dateOrder !== 0) return dateOrder;
+          return (firstEntry?.dayOrder ?? 0) - (secondEntry?.dayOrder ?? 0);
+        }
         if (firstDate) return -1;
         if (secondDate) return 1;
         return firstPlace.id - secondPlace.id;
