@@ -850,14 +850,16 @@ function initializeTable() {
 
   function renderTable() {
     const searchTerm = normalizeText(searchInput.value.trim());
-    const filteredPlaces = places.filter((place) => {
-      const matchesType = activeFilter === "all" || place.type === activeFilter;
-      const searchableText = normalizeText(
-        `${place.name} ${place.height} ${place.country} ${countryNames[place.country]} ${place.type}`,
-      );
+    const filteredPlaces = places
+      .filter((place) => {
+        const matchesType = activeFilter === "all" || place.type === activeFilter;
+        const searchableText = normalizeText(
+          `${place.name} ${place.height} ${place.country} ${countryNames[place.country]} ${place.type}`,
+        );
 
-      return matchesType && searchableText.includes(searchTerm);
-    });
+        return matchesType && searchableText.includes(searchTerm);
+      })
+      .sort((firstPlace, secondPlace) => secondPlace.height - firstPlace.height || firstPlace.id - secondPlace.id);
 
     const fragment = document.createDocumentFragment();
     filteredPlaces.forEach((place) => fragment.append(createPlaceRow(place)));
