@@ -25,11 +25,16 @@ Dodając kolejny szczyt lub przełęcz:
    zdobyty przez daną osobę.
 4. Na profilu uczestnika zaktualizuj wszystkie statystyki i dodaj jeden nowy
    katalog wyprawy. Katalogi ułóż według daty zdobycia — od najstarszego do
-   najnowszego — i połącz je z odpowiednimi podstronami.
+   najnowszego — i połącz je z odpowiednimi podstronami. Wejścia z tego samego
+   dnia ustaw w kolejności zdobycia.
 5. Utwórz podstronę na wzór istniejących wpisów. Każdy wpis umieszczaj w osobnym
    katalogu według schematu `entries/<uczestnik>/<miejsce>/index.html`.
    Zachowaj ten sam styl, układ, nazewnictwo plików, galerię i pełnoekranowy
    podgląd zdjęć. Uzupełnij komplet danych wyprawy oraz dodaj rzeczowe opisy
-   alternatywne i podpisy zdjęć.
+   alternatywne i podpisy zdjęć. Jeśli jedna wyprawa obejmuje kilka punktów,
+   zapisuj parametry dojścia od wspólnego startu do danego szczytu, gdy są
+   dostępne. Jeśli masz tylko dane całej wyprawy, wyraźnie to zaznacz — nie
+   dziel ich szacunkowo między szczyty. Do czasu dodania zdjęć pokaż czytelny
+   komunikat o oczekującej galerii.
 6. Na końcu sprawdź spójność statystyk, kolejność wpisów, linki, wszystkie
    zdjęcia oraz widok desktopowy i mobilny.

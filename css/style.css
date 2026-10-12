@@ -1760,7 +1760,7 @@ a.folder-card:focus-visible {
   font-weight: 650;
 }
 
-.has-gallery .folder-state {
+.has-entry .folder-state {
   color: var(--text-soft);
 }
 
@@ -1959,6 +1959,10 @@ a.folder-card:focus-visible {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-top: clamp(1.8rem, 4vw, 2.8rem);
   gap: 0.9rem;
+}
+
+.entry-gallery-grid[hidden] {
+  display: none;
 }
 
 .gallery-tile {

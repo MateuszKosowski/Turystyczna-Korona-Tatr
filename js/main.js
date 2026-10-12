@@ -140,9 +140,47 @@ const places = Object.freeze([
 
 // Dodaj numery pozycji do odpowiedniej listy, gdy potwierdzimy Wasze dotychczasowe wejścia.
 const completedPlaces = {
-  mateusz: new Set([1, 11, 25, 48, 60]),
+  mateusz: new Set([1, 11, 25, 48, 58, 59, 60]),
   artur: new Set([]),
 };
+
+const gesiaSzyjaPhotos = Object.freeze([
+  Object.freeze({
+    src: "assets/MK/Gęsia Szyja/1.webp",
+    width: 3072,
+    height: 3072,
+    alt: "Drogowskaz zielonego szlaku prowadzącego na Rusinową Polanę i Gęsią Szyję",
+    caption: "Początek szlaku na Gęsią Szyję",
+  }),
+  Object.freeze({
+    src: "assets/MK/Gęsia Szyja/2.webp",
+    width: 2252,
+    height: 2252,
+    alt: "Wędrowiec na leśnym szlaku z widokiem na tatrzańskie szczyty",
+    caption: "W drodze na Rusinową Polanę",
+  }),
+  Object.freeze({
+    src: "assets/MK/Gęsia Szyja/3.webp",
+    width: 3072,
+    height: 3072,
+    alt: "Mateusz na Rusinowej Polanie z panoramą Tatr w tle",
+    caption: "Na Rusinowej Polanie",
+  }),
+  Object.freeze({
+    src: "assets/MK/Gęsia Szyja/4.webp",
+    width: 3072,
+    height: 3072,
+    alt: "Kamienisty szlak wśród jesiennej roślinności z panoramą Tatr",
+    caption: "Podejście na Gęsią Szyję",
+  }),
+  Object.freeze({
+    src: "assets/MK/Gęsia Szyja/5.webp",
+    width: 2252,
+    height: 2252,
+    alt: "Trzech uczestników wyprawy na skalistym szczycie z kartką z nazwą Gęsia Szyja",
+    caption: "Na szczycie Gęsiej Szyi",
+  }),
+]);
 
 // Dodawaj tu wyłącznie potwierdzone wyprawy. Brak wpisu oznacza pusty katalog.
 const profileEntries = Object.freeze({
@@ -411,6 +449,69 @@ const profileEntries = Object.freeze({
         }),
       ]),
     }),
+    58: Object.freeze({
+      date: "2026-10-09",
+      dayOrder: 1,
+      page: "entries/mateusz/gesia-szyja/index.html",
+      route: Object.freeze({
+        label: "Wierch Poroniec → zielony szlak → Rusinowa Polana → zielony szlak → Gęsia Szyja",
+        duration: "1:45 h",
+        distanceKm: 4.5,
+        ascentM: 419,
+        descentM: 34,
+      }),
+      photos: gesiaSzyjaPhotos,
+    }),
+    59: Object.freeze({
+      date: "2026-10-09",
+      dayOrder: 2,
+      page: "entries/mateusz/wielki-kopieniec/index.html",
+      route: Object.freeze({
+        label: "Wierch Poroniec → zielony szlak → Rusinowa Polana → zielony szlak → Gęsia Szyja → zielony szlak → Waksmundzka Rówień → czerwony szlak → Psia Trawka → czerwony szlak → Hala Kopieniec (skrzyżowanie szlaków) → zielony szlak → Polana Kopieniec → Wielki Kopieniec",
+        duration: "3:43 h",
+        distanceKm: 11.7,
+        ascentM: 704,
+        descentM: 476,
+      }),
+      photos: Object.freeze([
+        ...gesiaSzyjaPhotos,
+        Object.freeze({
+          src: "assets/MK/Wielki Kopieniec/6.webp",
+          width: 3072,
+          height: 3072,
+          alt: "Schody na skalistym szlaku schodzącym z Gęsiej Szyi wśród jesiennej roślinności",
+          caption: "Zejście z Gęsiej Szyi",
+        }),
+        Object.freeze({
+          src: "assets/MK/Wielki Kopieniec/7.webp",
+          width: 3072,
+          height: 3072,
+          alt: "Drogowskaz na Waksmundzkiej Równi wskazujący czerwony szlak do Psiej Trawki",
+          caption: "Waksmundzka Rówień",
+        }),
+        Object.freeze({
+          src: "assets/MK/Wielki Kopieniec/8.webp",
+          width: 3072,
+          height: 3072,
+          alt: "Drogowskaz w jesiennym lesie wskazujący zielony szlak na Wielki Kopieniec",
+          caption: "Rozdroże w kierunku Wielkiego Kopieńca",
+        }),
+        Object.freeze({
+          src: "assets/MK/Wielki Kopieniec/9.webp",
+          width: 3072,
+          height: 3072,
+          alt: "Drewniane szałasy na Polanie Kopieniec z lasem i tatrzańskimi szczytami w tle",
+          caption: "Polana Kopieniec",
+        }),
+        Object.freeze({
+          src: "assets/MK/Wielki Kopieniec/10.webp",
+          width: 2252,
+          height: 2252,
+          alt: "Trzech uczestników wyprawy na szczycie z kartką z nazwą Wielki Kopieniec",
+          caption: "Na szczycie Wielkiego Kopieńca",
+        }),
+      ]),
+    }),
     60: Object.freeze({
       date: "2021-10-01",
       page: "entries/mateusz/nosal/index.html",
@@ -585,24 +686,26 @@ function createFolderCard(place, person) {
   const card = document.createElement(hasPage ? "a" : "article");
   const isCompleted = completedPlaces[person]?.has(place.id) ?? false;
   const photoCount = getPhotoCount(person, place.id);
+  const photoLabel = photoCount > 0 ? formatPhotoCount(photoCount) : "Zdjęcia wkrótce";
+  const openLabel = photoCount > 0 ? "Otwórz galerię" : "Otwórz wpis";
   const typeLabel = place.type === "przelecz" ? "Przełęcz" : "Szczyt";
   const accessibleDate = entry?.date ? formatEntryDate(entry.date) : "data do uzupełnienia";
   const dateMarkup = entry?.date
     ? `<time class="folder-date" datetime="${entry.date}">Zdobyty ${formatEntryDate(entry.date, "short")}</time>`
     : "";
 
-  card.className = `folder-card${isCompleted ? " is-completed" : " is-empty"}${hasPage ? " has-gallery" : ""}`;
+  card.className = `folder-card${isCompleted ? " is-completed" : " is-empty"}${hasPage ? " has-entry" : ""}${photoCount > 0 ? " has-gallery" : ""}`;
   if (hasPage) {
     card.href = entry.page;
     card.setAttribute(
       "aria-label",
-      `Otwórz galerię: ${place.name}, ${accessibleDate}, ${formatPhotoCount(photoCount)}`,
+      `${openLabel}: ${place.name}, ${accessibleDate}, ${photoLabel}`,
     );
   }
   card.innerHTML = `
     <div class="folder-card-topline">
       <span class="folder-index">${String(place.id).padStart(2, "0")}</span>
-      <span class="folder-photo-count">${formatPhotoCount(photoCount)}</span>
+      <span class="folder-photo-count">${photoLabel}</span>
     </div>
     <span class="folder-icon" aria-hidden="true">
       <svg viewBox="0 0 24 24">
@@ -616,7 +719,7 @@ function createFolderCard(place, person) {
       ${dateMarkup}
     </div>
     <div class="folder-card-footer">
-      <span class="folder-state"><i aria-hidden="true"></i>${hasPage ? "Otwórz galerię" : isCompleted ? "Zdobyty" : "Brak wpisu"}</span>
+      <span class="folder-state"><i aria-hidden="true"></i>${hasPage ? openLabel : isCompleted ? "Zdobyty" : "Brak wpisu"}</span>
       <abbr title="${countryNames[place.country]}">${place.country}</abbr>
     </div>
   `;
@@ -749,9 +852,15 @@ function initializeEntryPage() {
   document.querySelectorAll("[data-entry-photo-count]").forEach((element) => {
     element.textContent = formatPhotoCount(entry.photos.length);
   });
+  document.querySelectorAll("[data-entry-gallery-description]").forEach((element) => {
+    element.textContent = entry.photos.length > 0
+      ? `${formatPhotoCount(entry.photos.length)}. Wybierz kadr, aby otworzyć pełnoekranowy podgląd.`
+      : "Zdjęcia z tej wyprawy dodamy wkrótce.";
+  });
 
   const gallery = document.querySelector("#entry-gallery");
   if (gallery) {
+    gallery.hidden = entry.photos.length === 0;
     const fragment = document.createDocumentFragment();
 
     entry.photos.forEach((photo, index) => {
